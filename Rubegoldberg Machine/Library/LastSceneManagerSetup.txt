@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Box.unity
+- path: C:/Users/s5009412/Downloads/AutomaticCamera-v2/AutomaticCamera-v2/Assets/Example1/Example1.unity
   isLoaded: 1
   isActive: 1
