@@ -12,6 +12,7 @@ public class CubeRotateFirst : MonoBehaviour
     public GameObject container;
     public GameObject bumper;
     private int count = 0;
+    public GameObject sphere;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,16 +36,23 @@ public class CubeRotateFirst : MonoBehaviour
         {
             box.transform.Rotate(0, 0, -1);
             angle--;
-            if (angle == 0)
+            if (angle <= 0)
             {
                 isOn = false;
                 used = true;
+                container.transform.Translate(0.6f, 0, 0);
+                sphere.GetComponent<Rigidbody>().velocity -= sphere.GetComponent<Rigidbody>().velocity;
             }
         }
         else
         {
             if (used)
             {
+                if (count == 3)
+                {
+                    Vector3 temp = new Vector3(1, 0, 0);
+                    sphere.GetComponent<Rigidbody>().velocity = temp;
+                }
                 if (count < 30)
                 {
                     count++;
@@ -53,7 +61,6 @@ public class CubeRotateFirst : MonoBehaviour
                 {
                     if (count == 30)
                     {
-                        container.transform.Translate(0.6f, 0, 0);
                         bumper.GetComponent<SpringBounce>().bounceTrigger = true;
                         count = 50;
                     }
