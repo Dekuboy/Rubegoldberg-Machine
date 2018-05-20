@@ -7,9 +7,9 @@ public class CubeRotateSecond : MonoBehaviour
 {
     private bool isOn = false;
     private bool used = false;
-    private int angle = 90;
+    private float angle = 90;
     public GameObject box;
-    private int count = 0;
+    private float count = 0;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,8 +30,9 @@ public class CubeRotateSecond : MonoBehaviour
     {
         if (isOn)
         {
-            box.transform.Rotate(0, 1, 0);
-            angle--;
+            float change = 1 * 60f * Time.deltaTime;
+            box.transform.Rotate(0, change, 0);
+            angle -= change;
             if (angle <= 0)
             {
                 isOn = false;
@@ -42,7 +43,7 @@ public class CubeRotateSecond : MonoBehaviour
         {
             if(used)
             {
-                count++;
+                count += 60 * Time.deltaTime;
                 if (count > 300)
                 {
                     SceneManager.LoadScene("Menu");

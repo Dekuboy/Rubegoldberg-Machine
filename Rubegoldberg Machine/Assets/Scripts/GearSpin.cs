@@ -16,7 +16,7 @@ public class GearSpin : MonoBehaviour {
 	void Update () {
         if (rotationTrigger)
         {
-            transform.Rotate(0, rotationSpeed * 60 * Time.deltaTime, 0);
+            transform.Rotate(0, rotationSpeed * 60f * Time.deltaTime, 0);
         }
 	}
 }

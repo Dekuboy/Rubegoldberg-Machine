@@ -6,7 +6,7 @@ public class MoveShaft : MonoBehaviour {
 
     public bool moveTrigger = false;
     private bool used = false;
-    private int count = 0;
+    private float count = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -17,9 +17,10 @@ public class MoveShaft : MonoBehaviour {
 	void Update () {
 		if (moveTrigger && !used)
         {
-            transform.Translate(0, 0, -0.02f);
-            count++;
-            if (count > 170)
+            float change = -0.02f * 60f * Time.deltaTime;
+            transform.Translate(0, 0, change);
+            count -= change;
+            if (count > 0.02 * 170)
             {
                 used = true;
             }

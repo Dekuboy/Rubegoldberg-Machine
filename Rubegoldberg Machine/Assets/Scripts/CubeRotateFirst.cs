@@ -7,7 +7,7 @@ public class CubeRotateFirst : MonoBehaviour
 
     private bool isOn = false;
     private bool used = false;
-    private int angle = 90;
+    private float angle = 90;
     public GameObject box;
     public GameObject container;
     public GameObject bumper;
@@ -34,8 +34,9 @@ public class CubeRotateFirst : MonoBehaviour
     {
         if (isOn)
         {
-            box.transform.Rotate(0, 0, -1);
-            angle--;
+            float change = -1 * 60f * Time.deltaTime;
+            box.transform.Rotate(0, 0, change);
+            angle += change;
             if (angle <= 0)
             {
                 isOn = false;
